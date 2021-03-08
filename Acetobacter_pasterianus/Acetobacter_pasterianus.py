@@ -1,124 +1,68 @@
-# -*- coding: utf-8 -*-
-#===================================================================
-# 	IMPORTS 
-#===================================================================
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-# no imports
-
-#===================================================================
-# 	FUNKCJA
-#===================================================================
-	
-	
-	
 """
-Wczytuje plik z zawartoscia czesci genomu bakterii
-'Acetobacter pasterianus' jako string i oblicza czestosc wystepowania A , C , G , T.
+Reads the content of the file which contains part of the genome information of the
+Acetobacter Pasteuranius and calculates the amount of occurences of A, C, G, T.
 	in  : 
-		ls - zawartosc pliku
-		litera - litera dla ktorej chcemy obliczyc czestosc wystepowania
+		ls - the content of the file
+		letter - the letter for which we want to calculate the amount of occurences
 	out :
-		licznik_liter
+		letter_counter
 """
-def ilosc_liter(ls,litera):
+
+def letter_counter(ls,letter):
 	
-	licznik_liter = 0
+	letter_counter = 0
 	L = len(ls)
 	
 	for i in range(0,L):
 		element = ls[i]
-		if element == litera :
-			licznik_liter = licznik_liter + 1
+		if element == letter :
+			letter_counter = letter_counter + 1
 	
-	return licznik_liter
-	
+	return letter_counter
 
 
-#===================================================================
-# 	PROGRAM GLOWNY
-#===================================================================
-print '=============================================================='
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+print('============================================================== \n')
 
-#A = Adeniny
-#C = Cytozyny
-#G = Guaniny
-#T = Tyminy
+# A = Adenine
+# C = Cytosine
+# G = Guanine
+# T = Thymine
 
 #-------------------------------------------
-# wczytywanie pliku :
+# reading the content of the file :
 
 file_name = "Acetobacter_pasterianus.txt"
-
 f = open(file_name,'rb')
-
 st = f.read()
-
 f.close()
 
-print "st = " , st
-
-
-#-------------------------------------------
-# liczenie czestosci dla litery 'A' :
-
-letter = 'A'
-
-ilosc_liter_A = ilosc_liter(st,letter)
-print "ilosc liter = " , ilosc_liter_A
-
-L = len(st)
-print "L = " , L
-
-czestosc_A = ilosc_liter_A/float(L) 
-print "czestosc_A = " , czestosc_A    
+# print(" st = " , st)
 
 #-------------------------------------------
-# liczenie czestosci dla litery 'C' :
-
-letter = 'C'
-
-ilosc_liter_C = ilosc_liter(st,letter)
-print "ilosc liter = " , ilosc_liter_C
-
-czestosc_C = ilosc_liter_C/float(L) 
-print "czestosc_C = " , czestosc_C    
+# counting the amount of each letter :
 
 
+ls_letters = ['A', 'C', 'G', 'T']
+L = len(ls_letters)
+
+Lst = len(st)
+print(" Total amount of letters :" , Lst , "\n")
+
+for i in range(0,L):
+	letter = ls[i]
+	
+	# counting the amount of occurences:
+	amount_of_occurences = letter_counter(st, letter)
+	print(" Amount of occurencies of :" , letter, "=" , amount_of_occurences)
+	
+	# counting the frequency :
+	letter_freq = amount_of_occurences / float(Lst)
+	print(" Frequency :" , letter_freq , "\n")
+   
 
 
-#-------------------------------------------
-# liczenie czestosci dla litery 'G' :
-
-letter = 'G'
-
-ilosc_liter_G = ilosc_liter(st,letter)
-print "ilosc liter = " , ilosc_liter_G
-
-czestosc_G = ilosc_liter_G/float(L) 
-print "czestosc_G = " , czestosc_G    
-
-
-#-------------------------------------------
-# liczenie czestosci dla litery 'T' :
-
-letter = 'T'
-
-ilosc_liter_T = ilosc_liter(st,letter)
-print "ilosc liter = " , ilosc_liter_T
-
-czestosc_T = ilosc_liter_T/float(L) 
-print "czestosc_T = " , czestosc_T    
-
-
-
-
-#float sluzy zeby liczbe int(calkowita) na float(zmiennoprzcinkowa)
-#co robi float w programie?
-#zamienia st zeby byla liczba i mozna bylo ja policzyc
-
-
-
-# program napisany = 04/11/2016
-#===================================================================
-# 	END OF FILE
-#===================================================================
+# date : 04/11/2016
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
